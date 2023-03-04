@@ -4,6 +4,9 @@
   "description": "手动搭建react脚手架",
   "main": "index.js",
   "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack serve -c scripts/webpack.dev.js",
+    "build": "npm ts:checker && cross-env NODE_ENV=production webpack -c scripts/webpack.prod.js",
+    "ts:checker": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "VincentHuang",
@@ -15,6 +18,13 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "chalk": "^4.1.2",
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^5.5.0",
+    "typescript": "^4.9.5",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
   }
 }
