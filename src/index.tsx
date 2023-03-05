@@ -1,9 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./index.css";
 
-function App(params: any) {
-  return <div>"hello world"</div>;
+function App() {
+  return <div className="title">"hello world"</div>;
 }
 
 const root = document.getElementById("root");
-ReactDOM.render(root, <App />);
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  root
+);
+
+// const a = 1;
+// const b = 2;
+
+// console.log(a+b)
+// export{a,b}

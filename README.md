@@ -16,3 +16,15 @@
 - sass 支持 css 编程
 - sass-loader 加载 sass
   `npm install sass sass-loader -D`
+
+# webpack.prod.js 生产配置
+
+- [Webpack Optimization 中，会根据 mode 做出对应的优化。这里是惯用配置。](https://webpack.docschina.org/configuration/optimization/)
+
+- stats 不知道为什么用不了可能是 webpack 的版本不匹配
+
+- ts:checker 用不了，改为 npx tsc --noEmit
+
+- todo: MiniCssExtractPlugins 的配置，目前只能使用最基础的功能。无法根据实际需要修改 css 的路径。
+
+- public/index.html 中的 css 引入，需要对应在 dist 中的路径。

@@ -4,8 +4,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
-// const pkgJSON = require("../package.json");
-const chalk = require("chalk");
+const pkgJSON = require("../package.json");
+// const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+// const chalk = require("chalk");
 
 console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`);
 
@@ -13,7 +14,7 @@ module.exports = {
   entry: path.resolve(__dirname, "../src/index.tsx"),
   output: {
     filename: "[name].[contenthash].js",
-    assetModuleFileName: "[name].[contenthash].js",
+    // assetModuleFileName: "[name].[contenthash].js",
     path: path.resolve(__dirname, "../dist"),
     /**
      * 如果这里设置为 /public/assets/js ，那么在浏览器中
@@ -67,28 +68,28 @@ module.exports = {
       // expressions at compile time.
       __DEV__: process.env.NODE_ENV === "development",
     }),
-    new HtmlWebpackPlugin(),
-    // new HtmlWebpackPlugin({
-    //   template: path.resolve(__dirname, "../public/index.html"),
-    //   title: pkgJSON.name,
-    //   meta: {
-    //     description: {
-    //       type: "description",
-    //       content: pkgJSON.description,
-    //     },
-    //   },
-    // if mode === 'production', minify === true.
-    // It could change mode's value by command line. Such as :
-    // npm run dev || npm run build.
-    // minify: "auto",
-    // }),
+    // new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "../public/index.html"),
+      title: pkgJSON.name,
+      meta: {
+        description: {
+          type: "description",
+          content: pkgJSON.description,
+        },
+      },
+      // if mode === 'production', minify === true.
+      // It could change mode's value by command line. Such as :
+      // npm run dev || npm run build.
+      // minify: "auto",
+    }),
     new webpack.ProgressPlugin({
       activeModules: false,
       entries: true,
       handler(percentage, message, ...args) {
         // custom logic
         // console.info(percentage, message, ...args);
-        console.info(`percent ${chalk.green.bold(":percent")}`);
+        // console.info(`percent ${chalk.green.bold(":percent")}`);
       },
       modules: true,
       modulesCount: 5000,
