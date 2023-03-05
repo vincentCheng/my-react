@@ -11,6 +11,21 @@
   },
   "author": "VincentHuang",
   "license": "ISC",
+  "browerslist":{
+    "production":[
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development":[
+      "defaults",
+      "not ie < 11",
+      "last 2 version",
+      "> 1%",
+      "iOS 9",
+      "last 3 iOS versions"
+    ]
+  },
   "dependencies": {
     "@types/react": "^17.0.53",
     "@types/react-dom": "^17.0.19",
@@ -18,9 +33,16 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.13",
     "chalk": "^4.1.2",
     "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
+    "postcss": "^8.4.21",
+    "postcss-loader": "^7.0.2",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",

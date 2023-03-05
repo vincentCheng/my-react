@@ -10,7 +10,6 @@ const chalk = require("chalk");
 console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`);
 
 module.exports = {
-  // mode: "production",
   entry: path.resolve(__dirname, "../src/index.tsx"),
   output: {
     filename: "[name].[contenthash].js",
