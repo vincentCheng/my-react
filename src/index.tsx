@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
 function App() {
@@ -10,13 +11,9 @@ const root = document.getElementById("root");
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   root
 );
-
-// const a = 1;
-// const b = 2;
-
-// console.log(a+b)
-// export{a,b}

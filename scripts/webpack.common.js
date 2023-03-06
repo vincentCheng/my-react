@@ -11,7 +11,7 @@ const pkgJSON = require("../package.json");
 console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`);
 
 module.exports = {
-  entry: path.resolve(__dirname, "../src/index.tsx"),
+  entry: path.resolve(__dirname, "../src/app.tsx"),
   output: {
     filename: "[name].[contenthash].js",
     // assetModuleFileName: "[name].[contenthash].js",
