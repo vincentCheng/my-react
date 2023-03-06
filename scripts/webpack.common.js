@@ -42,7 +42,28 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ["ts-loader"],
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                [
+                  "@babel/preset-env", // 预制配置
+                  {
+                    corejs: {
+                      version: 3,
+                    },
+                    useBuiltIns: "usage", // 按需引入 polyfill
+                  },
+                ],
+                "@babel/preset-react", // react 环境
+              ],
+              // Make all helper references to avoid the duplication of the common functins.
+              plugins: ["@babel/plugin-transform-runtime"],
+            },
+          },
+          "ts-loader",
+        ],
         exclude: /node_modules/,
       },
       {

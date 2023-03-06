@@ -28,3 +28,24 @@
 - todo: MiniCssExtractPlugins 的配置，目前只能使用最基础的功能。无法根据实际需要修改 css 的路径。
 
 - public/index.html 中的 css 引入，需要对应在 dist 中的路径。
+
+# babel 及其配置
+
+- 安装 babel 核心和加载器
+
+  - babel-loader 是让 webpack 使用 babel。
+    `yarn add @babel/core babel-loader -D`
+
+- core-js 用于提升兼容性。
+
+  - 有些浏览器是不支持 Promise 和 Map 的，可以用这个转换。
+  - https://github.com/zloirock/core-js
+    `yarn add core-js -D`
+
+- 预制环境
+
+  - 根据浏览器加载对应的转换，提高兼容性。
+    `yarn add @babel/preset-env @babel/preset-react -D`
+
+- 打包的时候减少冗余代码。
+  `yarn add @babel/plugin-transform-runtime -D`
