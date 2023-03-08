@@ -1,10 +1,13 @@
 import { RouteObject } from "react-router-dom";
-import HomePage from "@/pages/home";
+// import HomePage from "@/pages/home";
+import LazyWrapper from "@/components/lazy-wrapper";
 
 const ROUTER_CONFIG: RouteObject[] = [
   {
     path: "/",
-    element: <HomePage />,
+    // element: <HomePage />,
+    element: <LazyWrapper path="/home" />,
+    // element: <LazyWrapper path="/home/index-old" />,
   },
   {
     path: "*",

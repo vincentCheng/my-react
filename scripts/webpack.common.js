@@ -11,7 +11,7 @@ const pkgJSON = require("../package.json");
 console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`);
 
 module.exports = {
-  entry: path.resolve(__dirname, "../src/app.tsx"),
+  entry: path.resolve(__dirname, "../src/index.tsx"),
   output: {
     filename: "[name].[contenthash].js",
     // assetModuleFileName: "[name].[contenthash].js",
@@ -89,21 +89,25 @@ module.exports = {
       // expressions at compile time.
       __DEV__: process.env.NODE_ENV === "development",
     }),
-    // new HtmlWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "../public/index.html"),
-      title: pkgJSON.name,
-      meta: {
-        description: {
-          type: "description",
-          content: pkgJSON.description,
-        },
-      },
-      // if mode === 'production', minify === true.
-      // It could change mode's value by command line. Such as :
-      // npm run dev || npm run build.
-      // minify: "auto",
+      inject: "body",
     }),
+    // new HtmlWebpackPlugin({
+    //   template: path.resolve(__dirname, "../public/index.html"),
+    //   title: pkgJSON.name,
+    //   inject: true,
+    // meta: {
+    //   description: {
+    //     type: "description",
+    //     content: pkgJSON.description,
+    //   },
+    // },
+    // if mode === 'production', minify === true.
+    // It could change mode's value by command line. Such as :
+    // npm run dev || npm run build.
+    // minify: "auto",
+    // }),
     new webpack.ProgressPlugin({
       activeModules: false,
       entries: true,
