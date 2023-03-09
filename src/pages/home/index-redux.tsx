@@ -5,6 +5,7 @@ import {
   counterSelector,
   incrementAsync,
 } from "@/store/reducers/counter";
+import { Button } from "@arco-design/web-react";
 
 const Index: FC = () => {
   const count = useSelector(counterSelector);
@@ -30,6 +31,7 @@ const Index: FC = () => {
       >
         异步+1
       </button>
+      <Button>Arco 按钮</Button>
     </div>
   );
 };

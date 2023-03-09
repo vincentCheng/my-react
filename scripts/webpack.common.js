@@ -4,7 +4,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
-const pkgJSON = require("../package.json");
+const ArcoWebpackPlugin = require("@arco-plugins/webpack-react");
+// const pkgJSON = require("../package.json");
 // const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 // const chalk = require("chalk");
 
@@ -84,6 +85,7 @@ module.exports = {
   },
   // 插件
   plugins: [
+    new ArcoWebpackPlugin(),
     new webpack.DefinePlugin({
       // Replace variables in my code with other values or
       // expressions at compile time.

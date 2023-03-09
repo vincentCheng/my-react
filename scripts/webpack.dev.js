@@ -19,7 +19,24 @@ module.exports = merge(common, {
     // 插件的执行顺序从右到左
     rules: [
       {
-        test: /\.(css|scss|sass)$/,
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            // postcss 处理css的兼容性。
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [["autoprefixer"]],
+              },
+            },
+          },
+        ],
+        include: /node_modules/,
+      },
+      {
+        test: /\.(scss|sass)$/,
         use: [
           "style-loader",
           "css-loader",
@@ -35,6 +52,24 @@ module.exports = merge(common, {
           "sass-loader",
         ],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.less$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            // postcss 处理css的兼容性。
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [["autoprefixer"]],
+              },
+            },
+          },
+          "less-loader",
+        ],
+        include: /node_modules/,
       },
     ],
     // 只输出错误日志。

@@ -122,3 +122,7 @@ scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项
 - scss 和 sass 都是 css 的预处理器。
   - scss 是 sass 的新语法，完全兼容 css。sass 是缩进式语法，不带大括号和分号。
   - scss 支持更多的 css3 功能，如媒体查询、选择器继承、颜色函数等。
+
+# 处理 css/less/sass
+
+- 参考 webpack.dev.js ，将三种样式文件分开。

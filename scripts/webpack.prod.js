@@ -31,10 +31,10 @@ module.exports = merge(common, {
     // 插件的执行顺序从右到左
     rules: [
       {
-        test: /\.(css|scss|sass)$/,
+        test: /\.(css|less|scss|sass)$/,
         use: [
           MiniCssExtractPlugins.loader,
-          //   "style-loader",
+          //   "style-loader", // 生产环境中使用 MiniCssExtractPlugins
           "css-loader",
           {
             // postcss 处理css的兼容性。
@@ -45,6 +45,7 @@ module.exports = merge(common, {
               },
             },
           },
+          "less-loader",
           "sass-loader",
         ],
         exclude: /node_modules/,
