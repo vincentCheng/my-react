@@ -94,3 +94,15 @@ class ErrorBoundary extends React.Component {
 ```
 
 - head 中先加载 css 资源，然后加载 dom 树，最后加载 script 资源。这样的加载顺序对性能是最好的。
+
+# ReturnType 能够获取一个函数的返回类型
+
+```typescript
+function foo(e: number): number {
+  return e;
+}
+
+type fooReturn = ReturnType<typeof foo>; // number
+```
+
+# 使用官网提供的 redux 模板代码。

@@ -6,8 +6,9 @@ const ROUTER_CONFIG: RouteObject[] = [
   {
     path: "/",
     // element: <HomePage />,
-    element: <LazyWrapper path="/home" />,
+    // element: <LazyWrapper path="/home" />,
     // element: <LazyWrapper path="/home/index-old" />,
+    element: <LazyWrapper path="/home/index-redux" />,
   },
   {
     path: "*",
