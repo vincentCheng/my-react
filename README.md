@@ -106,3 +106,19 @@ type fooReturn = ReturnType<typeof foo>; // number
 ```
 
 # 使用官网提供的 redux 模板代码。
+
+# normalize.css 规范化 css 样式。
+
+```shell
+npm install normalize.css
+```
+
+# sass-loader 和 scss-loader 的区别
+
+scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项目中使用 SCSS 或 SASS 语法编写样式表。它们的区别主要有两点 ³：
+
+- scss-loader 需要安装 sass 和 webpack 作为依赖，而 sass-loader 只需要安装 sass。
+- scss-loader 支持 SCSS 语法，而 sass-loader 支持 SASS 和 SCSS 语法。
+- scss 和 sass 都是 css 的预处理器。
+  - scss 是 sass 的新语法，完全兼容 css。sass 是缩进式语法，不带大括号和分号。
+  - scss 支持更多的 css3 功能，如媒体查询、选择器继承、颜色函数等。

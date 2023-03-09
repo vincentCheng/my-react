@@ -32,7 +32,7 @@ module.exports = merge(common, {
               },
             },
           },
-          //   "sass-loader",
+          "sass-loader",
         ],
         exclude: /node_modules/,
       },

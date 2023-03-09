@@ -5,7 +5,8 @@ import ErrorBoundary from "@/components/error-boundary/lego";
 import App from "./app";
 import { Provider } from "react-redux";
 import store from "@/store";
-import "../public/index.css";
+// import "../public/index.css";
+import "./app.scss";
 
 // function App() {
 //   return <div className="title">"hello world"</div>;
