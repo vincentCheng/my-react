@@ -1,0 +1,6 @@
+// 这里是告诉vscode，使用项目中的ts作为编译核心。
+// 能够结合typescript-plugin-css-modules这个插件，给出css样式提示。
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

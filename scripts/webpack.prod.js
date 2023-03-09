@@ -35,7 +35,17 @@ module.exports = merge(common, {
         use: [
           MiniCssExtractPlugins.loader,
           //   "style-loader", // 生产环境中使用 MiniCssExtractPlugins
-          "css-loader",
+          // "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                auto: true,
+                // 生产环境使用的动态类名
+                localIdentName: "[contenthash]",
+              },
+            },
+          },
           {
             // postcss 处理css的兼容性。
             loader: "postcss-loader",

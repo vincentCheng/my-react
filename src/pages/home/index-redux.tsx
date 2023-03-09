@@ -6,13 +6,14 @@ import {
   incrementAsync,
 } from "@/store/reducers/counter";
 import { Button } from "@arco-design/web-react";
+import classes from "./index.module.scss";
 
 const Index: FC = () => {
   const count = useSelector(counterSelector);
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className={classes.pageHome}>
       {/* {count === 3 ? throwError() : ""} */}
       计数器：{count}
       <br />
