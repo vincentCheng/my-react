@@ -57,27 +57,27 @@
 ```javascript
 class ErrorBoundary extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = { hasError: false };
+    super(props)
+    this.state = { hasError: false }
   }
 
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
-    return { hasError: true };
+    return { hasError: true }
   }
 
   componentDidCatch(error, errorInfo) {
     // You can also log the error to an error reporting service
-    logErrorToMyService(error, errorInfo);
+    logErrorToMyService(error, errorInfo)
   }
 
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <h1>Something went wrong.</h1>
     }
 
-    return this.props.children;
+    return this.props.children
   }
 }
 ```
@@ -99,10 +99,10 @@ class ErrorBoundary extends React.Component {
 
 ```typescript
 function foo(e: number): number {
-  return e;
+  return e
 }
 
-type fooReturn = ReturnType<typeof foo>; // number
+type fooReturn = ReturnType<typeof foo> // number
 ```
 
 # 使用官网提供的 redux 模板代码。
@@ -161,3 +161,46 @@ scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项
 - 引用一段话：我们只需要配置一些核心主流程的测试任务就好，同时在 CI/CD 中配置自动触发运行单测检查。
 
 - todo：这里需要配置一下，不然 react 中没法使用 jest。
+
+# eslint 配置、husky git/lint-staged/等配置。
+
+- [参考文献 1：](https://mp.weixin.qq.com/s/BN-zEcfqQX0UFpX9Ae9ApQ)
+
+- todo: eslint 使用 airbnb。
+
+- husky，提交代码之前安装的包
+
+```shell
+yarn add husky@3.1.0 -D
+# 相当于一个 ls | grep 中grep的功能。
+yarn add lint-staged -D
+yarn add @commitlint/cli -D
+yarn add @commitlint/config-conventional -D
+```
+
+package.json 中配置
+
+```json
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  }
+},
+"commitlint": {
+  "extends": [
+    "@commitlint/config-conventional"
+  ]
+},
+"lint-staged": {
+  "*.{ts,js}": [
+    "node --max_old_space_size=8192 ./node_modules/.bin/prettier -w",
+    "node --max_old_space_size=8192 ./node_modules/.bin/eslint --fix --color",
+    "git add"
+  ]
+},
+```
+
+这样配置好了后，开发者在 git commit 时，会首先调用 lint-staged 字段中命令，首先是 prettier 格式化，然后是 ESlint 校验并修复，然后将修改后的文件存入暂存区。
+
+然后是校验 commit message 是否符合规范，符合规范后才会成功 commit。
