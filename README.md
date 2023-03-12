@@ -155,3 +155,9 @@ scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项
 # axios 的封装
 
 - todo：[axios 精读](https://mp.weixin.qq.com/s/rJi_N42CDskIoFpSVcsJEg)
+
+# jest 单元测试
+
+- 引用一段话：我们只需要配置一些核心主流程的测试任务就好，同时在 CI/CD 中配置自动触发运行单测检查。
+
+- todo：这里需要配置一下，不然 react 中没法使用 jest。
