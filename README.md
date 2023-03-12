@@ -132,17 +132,17 @@ scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项
 - 参考 webpack.dev.js
 
 ```javascript
-          {
-            loader: "css-loader",
-            options: {
-              modules: {
-                // 开启动态类名
-                auto: true,
-                // 开发环境使用的动态类名
-                localIdentName: "[path][name]__[local]",
-              },
-            },
-          },
+{
+  loader: "css-loader",
+  options: {
+    modules: {
+      // 开启动态类名
+      auto: true,
+      // 开发环境使用的动态类名
+      localIdentName: "[path][name]__[local]",
+    },
+  },
+},
 ```
 
 - scss 是编译到 css，没有做样式隔离，极有可能同名 class 样式覆盖，可以通过自动生成前缀 css 类名解决。
@@ -151,3 +151,7 @@ scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项
 
 - .vscode/setting.json 的设定，能够对 css 样式给出代码提示。
 - tsconfig.json 中添加 "plugins": [{ "name": "typescript-plugin-css-modules" }]
+
+# axios 的封装
+
+- todo：[axios 精读](https://mp.weixin.qq.com/s/rJi_N42CDskIoFpSVcsJEg)

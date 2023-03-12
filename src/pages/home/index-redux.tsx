@@ -8,6 +8,10 @@ import {
 import { Button } from "@arco-design/web-react";
 import classes from "./index.module.scss";
 
+const TestHotUpdate: FC = () => {
+  return <div>111222433321TestHotUpdate</div>;
+};
+
 const Index: FC = () => {
   const count = useSelector(counterSelector);
   const dispatch = useDispatch();
@@ -32,7 +36,8 @@ const Index: FC = () => {
       >
         异步+1
       </button>
-      <Button>Arco 按钮</Button>
+      <Button>11111222Arco 按钮</Button>
+      <TestHotUpdate />
     </div>
   );
 };

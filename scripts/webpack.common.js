@@ -15,6 +15,7 @@ module.exports = {
   entry: path.resolve(__dirname, "../src/index.tsx"),
   output: {
     filename: "[name].[contenthash].js",
+    // hotUpdateChunkFilename: "[id].[fullhash].hot-update.js",
     // assetModuleFileName: "[name].[contenthash].js",
     path: path.resolve(__dirname, "../dist"),
     /**
@@ -78,7 +79,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: "assets/imgs/[name].[contenthash][ext]",
+          filename: "assets/imgs/[hash].[ext][query]",
         },
       },
     ],
