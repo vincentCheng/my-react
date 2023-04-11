@@ -49,6 +49,8 @@
 
 - 打包的时候减少冗余代码。
   `yarn add @babel/plugin-transform-runtime -D`
+  - 例如：每个文件都会重复引入`import React from 'react'`，加上这个之后就不需要每个文件都引入了。
+  - 同时要在 tsconfig.json 中设置 `"allowSyntheticDefaultImports": true`，允许合成默认的 import。
 
 # 懒加载，有可能导致白屏。
 
@@ -147,7 +149,7 @@ scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项
 
 - scss 是编译到 css，没有做样式隔离，极有可能同名 class 样式覆盖，可以通过自动生成前缀 css 类名解决。
 
-# 动态的 css 类名 ts 定义
+# 动态的 css 类名 ts 定义。css 样式编写的时候会有提示。
 
 - .vscode/setting.json 的设定，能够对 css 样式给出代码提示。
 - tsconfig.json 中添加 "plugins": [{ "name": "typescript-plugin-css-modules" }]
@@ -204,3 +206,5 @@ package.json 中配置
 这样配置好了后，开发者在 git commit 时，会首先调用 lint-staged 字段中命令，首先是 prettier 格式化，然后是 ESlint 校验并修复，然后将修改后的文件存入暂存区。
 
 然后是校验 commit message 是否符合规范，符合规范后才会成功 commit。
+
+- todo: 2023 年 3 月 12 日 20:25:17 意识到 jest 方面的知识十分欠缺，需要再学习。

@@ -1,17 +1,17 @@
 /**
  * 公用webpack配置。
  */
-import { resolve as _resolve } from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { DefinePlugin, ProgressPlugin } from 'webpack';
-import ArcoWebpackPlugin from '@arco-plugins/webpack-react';
+import { resolve as _resolve } from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { DefinePlugin, ProgressPlugin } from 'webpack'
+import ArcoWebpackPlugin from '@arco-plugins/webpack-react'
 // const pkgJSON = require("../package.json");
 // const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 // const chalk = require("chalk");
 
-console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`);
+console.log(`process.env.NODE_ENV ${process.env.NODE_ENV}`)
 
-export const entry = _resolve(__dirname, '../src/index.tsx');
+export const entry = _resolve(__dirname, '../src/index.tsx')
 export const output = {
   filename: '[name].[contenthash].js',
   // hotUpdateChunkFilename: "[id].[fullhash].hot-update.js",
@@ -24,7 +24,7 @@ export const output = {
    */
   publicPath: '/',
   clean: true,
-};
+}
 export const resolve = {
   // 支持扩展名
   extensions: ['.ts', '.tsx', '.js'],
@@ -32,11 +32,11 @@ export const resolve = {
   alias: {
     '@': _resolve(__dirname, '../src'),
   },
-};
+}
 export const module = {
   rules: [
     {
-      test: /\.tsx?$/,
+      test: /\.(t|j)sx?$/,
       use: [
         {
           loader: 'babel-loader',
@@ -76,7 +76,7 @@ export const module = {
       },
     },
   ],
-};
+}
 export const plugins = [
   new ArcoWebpackPlugin(),
   new DefinePlugin({
@@ -114,4 +114,4 @@ export const plugins = [
     dependenciesCount: 10000,
     percentBy: null,
   }),
-];
+]
