@@ -1,12 +1,12 @@
 /**
  * 开发环境配置，追求热更新快。
  */
-const { merge } = require("webpack-merge");
-const common = require("./webpack.common");
+import { merge } from 'webpack-merge'
+import common from './webpack.common'
 
-module.exports = merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
+export default merge(common, {
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     hot: true,
     open: true,
@@ -21,30 +21,30 @@ module.exports = merge(common, {
         // test: /\.(css|less|scss|sass)$/,
         test: /\.(css|scss|sass)$/,
         use: [
-          "style-loader",
+          'style-loader',
           // "css-loader",
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: {
                 // 开启动态类名
                 auto: true,
                 // 开发环境使用的动态类名
-                localIdentName: "[path][name]__[local]",
+                localIdentName: '[path][name]__[local]',
               },
             },
           },
           {
             // postcss 处理css的兼容性。
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [["autoprefixer"]],
+                plugins: [['autoprefixer']],
               },
             },
           },
           // "less-loader",
-          "sass-loader",
+          'sass-loader',
         ],
         // include: /node_modules/,
         // exclude: /node_modules/,
@@ -71,4 +71,4 @@ module.exports = merge(common, {
     // 只输出错误日志。
     // stats: "errors-only",
   },
-});
+})

@@ -1,20 +1,22 @@
 /**
  * 生产环境寻求兼容性更高，尽可能和开发环境看到相同效果。
  */
-const { merge } = require("webpack-merge");
-const MiniCssExtractPlugins = require("mini-css-extract-plugin");
-const common = require("./webpack.common");
-const TerserPlugin = require("terser-webpack-plugin");
+import { merge } from 'webpack-merge'
+import MiniCssExtractPlugins, {
+  loader as _loader,
+} from 'mini-css-extract-plugin'
+import common from './webpack.common'
+import TerserPlugin from 'terser-webpack-plugin'
 
-module.exports = merge(common, {
-  mode: "production",
+export default merge(common, {
+  mode: 'production',
   optimization: {
     // 默认值true
     // 告诉webpack使用TerserPlugin
     // 如果设置为false，那么就是使用minimizer中定义的插件压缩bundle?
     minimize: true,
     minimizer: [
-      "...",
+      '...',
       new TerserPlugin({
         terserOptions: {
           format: {
@@ -33,30 +35,30 @@ module.exports = merge(common, {
       {
         test: /\.(css|less|scss|sass)$/,
         use: [
-          MiniCssExtractPlugins.loader,
+          _loader,
           //   "style-loader", // 生产环境中使用 MiniCssExtractPlugins
           // "css-loader",
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: {
                 auto: true,
                 // 生产环境使用的动态类名
-                localIdentName: "[contenthash]",
+                localIdentName: '[contenthash]',
               },
             },
           },
           {
             // postcss 处理css的兼容性。
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [["autoprefixer"]],
+                plugins: [['autoprefixer']],
               },
             },
           },
-          "less-loader",
-          "sass-loader",
+          'less-loader',
+          'sass-loader',
         ],
         exclude: /node_modules/,
       },
@@ -70,4 +72,4 @@ module.exports = merge(common, {
       //   filename: "assets/css/[name].[contenthash].css",
     }),
   ],
-});
+})

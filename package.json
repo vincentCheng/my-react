@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "手动搭建react脚手架",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "ts:checker": "tsc --noEmit",
     "dev": "cross-env NODE_ENV=development webpack serve --config scripts/webpack.dev.js --progress --hot",
