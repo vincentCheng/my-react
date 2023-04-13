@@ -1,6 +1,6 @@
 import axios, { AxiosProxyConfig, AxiosRequestConfig } from "axios";
 import axiosRetry from "axios-retry";
-import { Notification } from "@arco-design/web-react";
+// import { Notification } from "@arco-design/web-react";
 
 const BASE_CONFIG: Partial<AxiosRequestConfig> = {
   baseURL: "/backend/api/",
@@ -19,7 +19,7 @@ const http = async <T>(
     const r = await client(url, { method, ...config });
     if (r?.data?.status) {
       // 存在错误，弹窗处理。
-      Notification.error({
+      console.error({
         title: "错误",
         content: r?.data?.prompts ?? "默认错误内容",
       });

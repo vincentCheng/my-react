@@ -10,7 +10,7 @@ module.exports = merge(common, {
   mode: "production",
   optimization: {
     // 默认值true
-    // 官网说这事告诉webpack使用TerserPlugin
+    // 告诉webpack使用TerserPlugin
     // 如果设置为false，那么就是使用minimizer中定义的插件压缩bundle?
     minimize: true,
     minimizer: [
@@ -18,7 +18,7 @@ module.exports = merge(common, {
       new TerserPlugin({
         terserOptions: {
           format: {
-            // 关闭评论
+            // 清除掉注释
             comments: false,
           },
         },
