@@ -32,12 +32,11 @@
   - babel-loader 是让 webpack 使用 babel。
     `yarn add @babel/core babel-loader -D`
 
-
 ## core-js 用于提升兼容性。
 
-  - 有些浏览器是不支持 Promise 和 Map 的，可以用这个转换。
+- 有些浏览器是不支持 Promise 和 Map 的，可以用这个转换。
 
-    `yarn add core-js -D`
+  `yarn add core-js -D`
 
 - 预制环境
 
@@ -48,6 +47,7 @@
 - 打包的时候减少冗余代码。
 
   `yarn add @babel/plugin-transform-runtime -D`
+
   - 例如：每个文件都会重复引入`import React from 'react'`，加上这个之后就不需要每个文件都引入了。
   - 同时要在 tsconfig.json 中设置 `"allowSyntheticDefaultImports": true`，允许合成默认的 import。
 
@@ -106,6 +106,10 @@ type fooReturn = ReturnType<typeof foo> // number
 
 # 使用官网提供的 redux 模板代码。
 
+## reduxjs-toolkit 已经自带 immer，能够执行状态的持久化。
+
+- 但是不要修改原有状态的同时又返回新的状态。
+
 # normalize.css 规范化 css 样式。
 
 ```shell
@@ -148,14 +152,14 @@ scss-loader 和 sass-loader 都是 webpack 的 loader，它们可以让你在项
 
 # 动态的 css 类名 ts 定义。css 样式编写的时候会有提示。
 
- - 安裝
+- 安裝
 
 ```shell
  npm i -D "typescript-plugin-css-modules"
 ```
+
 - .vscode/setting.json 的设定，能够对 css 样式给出代码提示。
 - tsconfig.json 中添加 "plugins": [{ "name": "typescript-plugin-css-modules" }]
-
 
 # axios 的封装
 
@@ -210,8 +214,8 @@ package.json 中配置
 
 然后是校验 commit message 是否符合规范，符合规范后才会成功 commit。
 
-
 ### 参考文献：
+
 - https://juejin.cn/post/7087811040591675428
 - https://mp.weixin.qq.com/s/i1AVCXliehk5cMLPmPueOA
 - https://mp.weixin.qq.com/s/v3r3v2FOMQGunPN1vQh_Wg
