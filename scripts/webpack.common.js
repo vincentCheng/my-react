@@ -1,11 +1,14 @@
 /**
  * 公用webpack配置。
  */
+const glob = require('glob')
 const path = require('path')
 const _resolve = path.resolve
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const ArcoWebpackPlugin = require('@arco-plugins/webpack-react')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
 // const pkgJSON = require("../package.json");
 // const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 // const chalk = require("chalk");
@@ -65,10 +68,11 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|svg|gif)$/i,
+        // 这是webpack5新引入的Asset Module类型，代替file-loader和url-loader
         type: 'asset',
         parser: {
           // 如果小于25kb，那么内联写入css中。
-          // 如果大于24kb，那么就写入导出文件夹。
+          // 如果大于25kb，那么就写入导出文件夹。
           dataUrlCondition: {
             maxsize: 25 * 1024, // 25kb
           },
@@ -80,6 +84,15 @@ module.exports = {
     ],
   },
   plugins: [
+    new PurgeCSSPlugin({
+      paths: glob.sync(`${path.join(__dirname, '../src')}/**/*`, {
+        nodir: true,
+      }),
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 8889,
+      openAnalyzer: false,
+    }),
     new ArcoWebpackPlugin(),
     new webpack.DefinePlugin({
       // Replace variables in my code with other values or

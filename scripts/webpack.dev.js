@@ -3,8 +3,11 @@
  */
 const { merge } = require('webpack-merge')
 const common = require('./webpack.common')
+// 分析打包速度
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const smp = new SpeedMeasurePlugin()
 
-module.exports = merge(common, {
+const config = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
@@ -22,7 +25,6 @@ module.exports = merge(common, {
         test: /\.(css|scss|sass)$/,
         use: [
           'style-loader',
-          // "css-loader",
           {
             loader: 'css-loader',
             options: {
@@ -43,32 +45,11 @@ module.exports = merge(common, {
               },
             },
           },
-          // "less-loader",
           'sass-loader',
         ],
-        // include: /node_modules/,
-        // exclude: /node_modules/,
       },
-      // {
-      //   test: /\.(scss|sass)$/,
-      //   use: [
-      //     "style-loader",
-      //     "css-loader",
-      //     {
-      //       // postcss 处理css的兼容性。
-      //       loader: "postcss-loader",
-      //       options: {
-      //         postcssOptions: {
-      //           plugins: [["autoprefixer"]],
-      //         },
-      //       },
-      //     },
-      //     "sass-loader",
-      //   ],
-      //   exclude: /node_modules/,
-      // },
     ],
-    // 只输出错误日志。
-    // stats: "errors-only",
   },
 })
+
+module.exports = smp.wrap(config)

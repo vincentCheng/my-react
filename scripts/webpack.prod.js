@@ -1,19 +1,13 @@
 /**
  * 生产环境寻求兼容性更高，尽可能和开发环境看到相同效果。
  */
-// import { merge } from 'webpack-merge'
-const merge = require('webpack-merge')
-// import MiniCssExtractPlugins, {
-//   loader as _loader,
-// } from 'mini-css-extract-plugin'
-const minicss = require('mini-css-extract-plugin')
-const _loader = minicss.loader
-// import common from './webpack.common'
+const { merge } = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const _loader = MiniCssExtractPlugin.loader
 const common = require('./webpack.common')
-// import TerserPlugin from 'terser-webpack-plugin'
 const TerserPlugin = require('terser-webpack-plugin')
 
-export default merge(common, {
+const config = merge(common, {
   mode: 'production',
   optimization: {
     // 默认值true
@@ -23,6 +17,7 @@ export default merge(common, {
     minimizer: [
       '...',
       new TerserPlugin({
+        parallel: 2,
         terserOptions: {
           format: {
             // 清除掉注释
@@ -41,8 +36,6 @@ export default merge(common, {
         test: /\.(css|less|scss|sass)$/,
         use: [
           _loader,
-          //   "style-loader", // 生产环境中使用 MiniCssExtractPlugins
-          // "css-loader",
           {
             loader: 'css-loader',
             options: {
@@ -68,13 +61,13 @@ export default merge(common, {
         exclude: /node_modules/,
       },
     ],
-    // 只输出错误日志。
-    // stats: "errors-only",
   },
   plugins: [
     // 将css导出到单独文件。
-    new MiniCssExtractPlugins({
-      //   filename: "assets/css/[name].[contenthash].css",
+    new MiniCssExtractPlugin({
+      filename: 'assets/css/[name].[contenthash].css',
     }),
   ],
 })
+
+module.exports = config
