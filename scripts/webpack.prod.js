@@ -1,12 +1,17 @@
 /**
  * 生产环境寻求兼容性更高，尽可能和开发环境看到相同效果。
  */
-import { merge } from 'webpack-merge'
-import MiniCssExtractPlugins, {
-  loader as _loader,
-} from 'mini-css-extract-plugin'
-import common from './webpack.common'
-import TerserPlugin from 'terser-webpack-plugin'
+// import { merge } from 'webpack-merge'
+const merge = require('webpack-merge')
+// import MiniCssExtractPlugins, {
+//   loader as _loader,
+// } from 'mini-css-extract-plugin'
+const minicss = require('mini-css-extract-plugin')
+const _loader = minicss.loader
+// import common from './webpack.common'
+const common = require('./webpack.common')
+// import TerserPlugin from 'terser-webpack-plugin'
+const TerserPlugin = require('terser-webpack-plugin')
 
 export default merge(common, {
   mode: 'production',

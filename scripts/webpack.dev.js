@@ -1,10 +1,10 @@
 /**
  * 开发环境配置，追求热更新快。
  */
-import { merge } from 'webpack-merge'
-import common from './webpack.common'
+const { merge } = require('webpack-merge')
+const common = require('./webpack.common')
 
-export default merge(common, {
+module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
